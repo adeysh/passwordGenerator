@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <script src="index.js" defer></script>
+    <script src="https://kit.fontawesome.com/98cfcb559a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="upper">
+            <h1>
+                <i class="fa-solid fa-lock" style="color: #c01c28;"></i>
+                Password Generator
+            </h1>
+            <div class="password">
+                <p id="password"></p>
+            </div>
+            <div class="range_container">
+                <label for="range">Password Length <span id="passRangeValue">1</span></label>
+                <input type="range" name="range" id="range" min="1" max="20" value="10">
+            </div>
+            <div class="checkboxes">
+                <div class="form_control">
+                    <label for="uppercase" class="check">Include Uppercase</label>
+                    <input type="checkbox" name="uppercase" id="uppercase" onclick="highlightCheckedBox(event)">
+                </div>
+                <div class="form_control">
+                    <label for="numbers" class="check">Include Numbers</label>
+                    <input type="checkbox" name="numbers" id="numbers" onclick="highlightCheckedBox(event)">
+                </div>
+                <div class="form_control">
+                    <label for="symbols" class="check">Include Symbols</label>
+                    <input type="checkbox" name="symbols" id="symbols" onclick="highlightCheckedBox(event)">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="generateBtn" id="generateBtn">Generate Password</button>
+    </div>
+</body>
+
+</html>
