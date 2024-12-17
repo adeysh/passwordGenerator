@@ -18,8 +18,11 @@
                 <i class="fa-solid fa-lock" style="color: #c01c28;"></i>
                 Password Generator
             </h1>
-            <div class="password">
-                <p id="password"></p>
+            <div class="password" onmousemove="hoverTooltip(event)" onclick="copyPassword()">
+                <p id="password" onclick="copyPassword()">
+
+                <div id="tooltip">Click to Copy!</div>
+                </p>
             </div>
             <div class="range_container">
                 <label for="range">Password Length <span id="passRangeValue">1</span></label>

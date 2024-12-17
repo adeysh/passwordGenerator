@@ -17,7 +17,6 @@ function getRndInteger(min, max) {
 }
 
 const generatePassword = (passwordLength, includeUpper, includeNumber, includeSymbol) => {
-
     let passwordArr = [];
     passwordArr = passwordArr.concat(lowerAlphabets);
 
@@ -31,22 +30,14 @@ const generatePassword = (passwordLength, includeUpper, includeNumber, includeSy
         passwordArr = passwordArr.concat(symbols);
     }
 
-    console.log(passwordArr);
-
-
     let password = [];
-
     for (let i = 0; i < passwordLength; i++) {
-
         const random = getRndInteger(0, passwordArr.length);
-
         const passCharacter = passwordArr[random];
-        console.log(random);
         password.push(passCharacter);
     }
 
     password = password.join("");
-    console.log(password);
     return password;
 };
 
@@ -64,6 +55,7 @@ generateBtn.addEventListener("click", () => {
     const password = generatePassword(passwordLength, includeUpper, includeNumber, includeSymbol);
 
     renderPassword(password);
+    resetTooltip();
 });
 
 const highlightCheckedBox = (event) => {
@@ -74,6 +66,38 @@ const highlightCheckedBox = (event) => {
         labelEl.classList.add("check");
     }
 };
+
+function hoverTooltip(e) {
+    const passwordEl = document.getElementById('password');
+    if (passwordEl.innerText !== "") {
+        document.getElementById("tooltip").style.display = "block";
+        let x = e.clientX;
+        let y = e.clientY;
+        const offsetX = -500;
+        const offsetY = -260;
+        document.getElementById("tooltip").style.left = x + offsetX + "px";
+        document.getElementById("tooltip").style.top = y + offsetY + "px";
+    } else {
+        document.getElementById("tooltip").style.display = "none";
+    }
+}
+
+function resetTooltip() {
+    navigator.clipboard.writeText("");
+    let tooltip = document.getElementById('tooltip');
+    tooltip.innerText = "Click to Copy!";
+    tooltip.style.backgroundColor = "rgb(52, 42, 42)";
+}
+
+function copyPassword() {
+    let password = document.getElementById('password');
+    if (password.innerText !== "") {
+        navigator.clipboard.writeText(password.innerText);
+        let tooltip = document.getElementById('tooltip');
+        tooltip.innerText = "Copied";
+        tooltip.style.backgroundColor = "#c01c28";
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const range = document.getElementById('range');
